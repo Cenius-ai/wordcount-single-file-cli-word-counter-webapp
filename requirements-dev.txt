@@ -1,0 +1,5 @@
+# Developer-only dependencies: the test runner.
+#
+# wordcount itself is standard-library only and needs nothing from this file.
+# Installed by install.sh so `python3 -m pytest` works from a clean checkout.
+pytest==9.1.1

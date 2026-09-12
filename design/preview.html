@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wordcount — design direction</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+</head>
+<body>
+<main class="shell">
+
+  <h1 class="page-title">wordcount</h1>
+  <p class="lede">
+    Design direction <strong>Calm Precise</strong> — the trustworthy instrument.
+    Restraint is the craft: calm neutral chrome, colour spent only where it
+    carries meaning, and every interactive component shipping all of its states.
+    Every value on this page comes from <code>design/tokens.css</code> and is
+    consumed by <code>design/components.css</code>; no component hard-codes a
+    colour, size or duration.
+  </p>
+
+  <section class="section">
+    <span class="section__numeral" aria-hidden="true">01</span>
+    <h2 class="section__title">Palette</h2>
+    <div class="swatches">
+      <div class="swatch"><span class="swatch__chip" style="background: var(--background)"></span><span class="swatch__name">--background<span class="swatch__hex">#fff9f0</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--foreground)"></span><span class="swatch__name">--foreground<span class="swatch__hex">#1a1105</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--card)"></span><span class="swatch__name">--card<span class="swatch__hex">#fffef9</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--card-foreground)"></span><span class="swatch__name">--card-foreground<span class="swatch__hex">#1a1105</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--primary)"></span><span class="swatch__name">--primary<span class="swatch__hex">#2b1c06</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--on-primary)"></span><span class="swatch__name">--on-primary<span class="swatch__hex">#ffffff</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--secondary)"></span><span class="swatch__name">--secondary<span class="swatch__hex">#f2ece3</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--on-secondary)"></span><span class="swatch__name">--on-secondary<span class="swatch__hex">#1a1105</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--muted)"></span><span class="swatch__name">--muted<span class="swatch__hex">#f2ece3</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--muted-foreground)"></span><span class="swatch__name">--muted-foreground<span class="swatch__hex">#6d6152</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--accent)"></span><span class="swatch__name">--accent<span class="swatch__hex">#986438 · oklch(0.55 0.09 60)</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--on-accent)"></span><span class="swatch__name">--on-accent<span class="swatch__hex">#ffffff</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--ring)"></span><span class="swatch__name">--ring<span class="swatch__hex">#986438</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--border)"></span><span class="swatch__name">--border<span class="swatch__hex">#e4ddd4</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--destructive)"></span><span class="swatch__name">--destructive<span class="swatch__hex">#c9302d</span></span></div>
+      <div class="swatch"><span class="swatch__chip" style="background: var(--on-destructive)"></span><span class="swatch__name">--on-destructive<span class="swatch__hex">#ffffff</span></span></div>
+    </div>
+    <p class="note">
+      Charting APIs, <code>&lt;canvas&gt;</code> and native theming receive the
+      hex twin <code>#986438</code>; only CSS ramps may use
+      <code>oklch(0.55 0.09 60)</code>.
+    </p>
+  </section>
+
+  <section class="section">
+    <span class="section__numeral" aria-hidden="true">02</span>
+    <h2 class="section__title">Type</h2>
+    <div class="ramp">
+      <div class="ramp__row">
+        <span class="ramp__label">heading · Urbanist 700</span>
+        <span class="ramp__heading">42 words in this file</span>
+      </div>
+      <div class="ramp__row">
+        <span class="ramp__label">body · Mulish 400</span>
+        <span class="ramp__body">Counts are printed to stdout; every diagnostic goes to stderr.</span>
+      </div>
+      <div class="ramp__row">
+        <span class="ramp__label">metric · tabular</span>
+        <span class="ramp__body metric">20,025,000 words · 98 MB · ≈2.0 s</span>
+      </div>
+      <div class="ramp__row">
+        <span class="ramp__label">mono · output</span>
+        <span class="ramp__body"><code>wordcount samples/sample.txt</code></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="section__numeral" aria-hidden="true">03</span>
+    <h2 class="section__title">The CLI contract</h2>
+    <ul class="rows">
+      <li class="row">
+        <span class="row__code">0</span>
+        <span class="row__what">Count printed<span class="row__why">stdout carries the integer and a trailing newline, nothing else</span></span>
+        <span class="pill">success</span>
+      </li>
+      <li class="row">
+        <span class="row__code">1</span>
+        <span class="row__what">Unreadable input<span class="row__why">wordcount: missing.txt: no such file</span></span>
+        <span class="pill pill--failure">i/o error</span>
+      </li>
+      <li class="row">
+        <span class="row__code">2</span>
+        <span class="row__what">Bad command line<span class="row__why">usage: wordcount [-h] [--version] FILE</span></span>
+        <span class="pill pill--neutral">usage error</span>
+      </li>
+    </ul>
+    <pre class="code-block"><code>$ wordcount samples/sample.txt
+42
+$ count=$(wordcount notes/tide.txt) &amp;&amp; echo "the file holds $count words"
+the file holds 118 words</code></pre>
+  </section>
+
+  <section class="section">
+    <span class="section__numeral" aria-hidden="true">04</span>
+    <h2 class="section__title">States and measurements</h2>
+    <p class="lede">
+      Default, hover, active, focus-visible and disabled are all defined in
+      <code>design/components.css</code>; focus uses a crisp 2px
+      <code>--focus-ring</code> offset by 2px. Motion is a precision tick:
+      160ms ease-out, 300ms data flash, both disabled under
+      <code>prefers-reduced-motion</code>.
+    </p>
+    <p>
+      <button class="btn" type="button">Focused by keyboard</button>
+      <button class="btn" type="button" disabled>Disabled</button>
+    </p>
+    <dl class="metrics">
+      <div class="metric">
+        <dd class="metric__value">20,025,000</dd>
+        <dt class="metric__label">words counted in a 98 MB file</dt>
+      </div>
+      <div class="metric">
+        <dd class="metric__value">≈2.0 s</dd>
+        <dt class="metric__label">wall time, single streaming pass</dt>
+      </div>
+      <div class="metric">
+        <dd class="metric__value">0</dd>
+        <dt class="metric__label">tracebacks on failure</dt>
+      </div>
+    </dl>
+    <p class="note">
+      The terminal is the product surface: wordcount ships no web UI, so nothing
+      here is served or referenced at runtime. This page is the design reference
+      that keeps the committed direction — palette, type, hairlines, the one
+      elevation, status pills and the oversized ghost numerals — reviewable in
+      one place.
+    </p>
+  </section>
+
+</main>
+</body>
+</html>

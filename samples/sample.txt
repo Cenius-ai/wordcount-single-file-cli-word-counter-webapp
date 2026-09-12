@@ -1,0 +1,3 @@
+The river counts every stone twice: once when the water lifts it, and once
+when the current lets it settle. Nobody asks the river for a total; the
+river keeps none. A count is a question, never a fact. Water keeps moving.
