@@ -1,0 +1,287 @@
+/* ============================================================================
+   wordcount — components
+   Consumes design/tokens.css ONLY: every color, size, space and duration below
+   is a var() reference, never a raw value. Direction: "Calm Precise" --
+   hairline separators instead of boxes, ONE elevation (overlays only), crisp
+   2px accent focus rings, tabular numerals on every metric, status pills as
+   tinted backgrounds with a matching 1px border, 160ms ease-out feedback.
+   ============================================================================ */
+
+.shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6) var(--space-16);
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-2);
+}
+
+.lede {
+  color: var(--text-muted);
+  max-width: var(--measure);
+  margin: 0 0 var(--space-8);
+}
+
+/* Signature move: oversized ghost section numerals behind each heading. */
+.section {
+  position: relative;
+  padding: var(--space-8) 0;
+  border-top: var(--hairline-width) solid var(--hairline);
+}
+
+.section__numeral {
+  position: absolute;
+  top: var(--space-1);
+  right: 0;
+  font-family: var(--font-heading);
+  font-size: var(--ghost-numeral);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ghost-numeral-ink);
+  pointer-events: none;
+  user-select: none;
+}
+
+.section__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+}
+
+/* --- palette: one swatch per committed token ------------------------------ */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-3);
+}
+
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+  padding: var(--space-2);
+  border: var(--hairline-width) solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.swatch__chip {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: var(--hairline-width) solid var(--hairline);
+}
+
+.swatch__name {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  overflow-wrap: anywhere;
+}
+
+.swatch__hex {
+  display: block;
+  color: var(--text-muted);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- type ramp ------------------------------------------------------------ */
+.ramp {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.ramp__row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding-bottom: var(--space-3);
+  border-bottom: var(--hairline-width) solid var(--hairline);
+}
+
+.ramp__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--text-muted);
+}
+
+.ramp__heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-h1);
+}
+
+.ramp__body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+}
+
+/* --- status pills: accent/destructive tint + matching 1px border ---------- */
+.pill {
+  display: inline-block;
+  padding: 0.125rem var(--space-2);
+  border-radius: var(--radius-pill);
+  border: var(--hairline-width) solid var(--accent-edge);
+  background: var(--accent-tint);
+  color: var(--primary);
+  font-size: var(--text-small);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pill--failure {
+  border-color: var(--destructive-edge);
+  background: var(--destructive-tint);
+  color: var(--destructive);
+}
+
+.pill--neutral {
+  border-color: var(--hairline);
+  background: var(--muted);
+  color: var(--on-secondary);
+}
+
+/* --- contract list: rows separated by hairlines, no card nesting ---------- */
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-3) var(--space-2);
+  border-bottom: var(--hairline-width) solid var(--hairline);
+  transition: background var(--motion-tick) var(--ease-out);
+}
+
+.row:first-child {
+  border-top: var(--hairline-width) solid var(--hairline);
+}
+
+.row:hover {
+  background: var(--surface-sunken);
+}
+
+.row__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  color: var(--primary);
+}
+
+.row__what {
+  font-weight: 700;
+}
+
+.row__why {
+  display: block;
+  color: var(--text-muted);
+  font-size: var(--text-small);
+  font-weight: 400;
+}
+
+/* --- buttons: every state present ---------------------------------------- */
+.btn {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--on-primary);
+  background: var(--primary);
+  border: var(--hairline-width) solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  min-height: 44px;
+  cursor: pointer;
+  transition: background var(--motion-tick) var(--ease-out),
+    transform var(--motion-tick) var(--ease-out);
+}
+
+.btn:hover {
+  background: var(--primary);
+  opacity: 0.92;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* --- code and metrics ----------------------------------------------------- */
+.code-block {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border: var(--hairline-width) solid var(--hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin: 0;
+}
+
+.metric__value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-variant-numeric: tabular-nums;
+  color: var(--primary);
+}
+
+.metric__label {
+  color: var(--text-muted);
+  font-size: var(--text-small);
+}
+
+.note {
+  color: var(--text-muted);
+  font-size: var(--text-small);
+  max-width: var(--measure);
+}
+
+@media (max-width: 480px) {
+  .shell {
+    padding: var(--space-8) var(--space-4) var(--space-12);
+  }
+
+  .ramp__row,
+  .row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .section__numeral {
+    font-size: 4rem;
+  }
+}
