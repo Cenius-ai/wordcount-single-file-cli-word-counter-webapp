@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wordcount"
+version = "1.0.0"
+description = "Count the whitespace-separated words in one text file."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "cenius" }]
+keywords = ["cli", "text", "word count"]
+classifiers = [
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing",
+]
+# Standard library only: the tool runs offline and unaided.
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+wordcount = "wordcount:main"
+
+[tool.setuptools]
+py-modules = ["wordcount"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

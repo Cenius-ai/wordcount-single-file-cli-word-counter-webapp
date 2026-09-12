@@ -1,0 +1,8 @@
+# wordcount has NO third-party runtime dependencies.
+#
+# The tool is standard-library only ("plain Python, single file"), so it runs
+# offline and unaided on a bare Python 3.9+ interpreter. This file exists so the
+# install step is a single, obvious `pip install -r requirements.txt` that
+# succeeds trivially; the developer test runner lives in requirements-dev.txt.
+
+# Runtime dependencies: (none)
