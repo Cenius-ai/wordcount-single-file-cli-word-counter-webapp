@@ -19,7 +19,7 @@ _Local clone? See [Quick start](#quick-start) below. cenius.ai is the zero-setup
 
 ## Architecture
 
-No external services required: the entire command-line tool runs from this Full-stack app repo (25 files). Top-level layout: `design/`, `samples/`, `tests/`. The setup script (`install.sh`) installs runtime dependencies and loads a starter dataset so the app is immediately usable. See [`INSTALL.md`](INSTALL.md) for complete setup instructions.
+No external services required: the entire command-line tool runs from this Full-stack app repo (17 files). Top-level layout: `design/`, `samples/`, `tests/`. The setup script (`install.sh`) installs runtime dependencies and loads a starter dataset so the app is immediately usable. See [`INSTALL.md`](INSTALL.md) for complete setup instructions.
 
 ## Features
 
